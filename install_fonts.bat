@@ -5,7 +5,7 @@ echo This may take a while. Please wait...
 echo.
 
 set "fonts_dir=%WINDIR%\Fonts"
-set "source_dir=E:\Fonts"
+set "source_dir=%~dp0"
 
 :: Require admin privileges
 net session >nul 2>&1

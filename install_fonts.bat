@@ -3,7 +3,7 @@ setlocal enabledelayedexpansion
 echo Installing fonts...
 echo This may take a while. Please wait...
 echo.
-
+ 
 set "fonts_dir=%WINDIR%\Fonts"
 set "source_dir=%~dp0"
 

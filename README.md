@@ -37,6 +37,9 @@ The Mehr Nastaliq Web Regular font is an OpenType Urdu Nastaliq font. It follows
 ### ✨ Montserrat
 Montserrat is a geometric sans-serif typeface inspired by posters, signs, and painted windows from the first half of the twentieth century, seen in the historic Montserrat neighborhood of Buenos Aires.
 
+### ✨ San Francisco Pro
+San Francisco Pro (SF Pro) is Apple's system typeface for macOS, iOS, and iPadOS, designed for optimal legibility and neutrality across display and text sizes. This collection includes the full **Text**, **Display**, and **Rounded** families in 9 weights (Ultralight to Black) with matching italics, plus the italic cut. Obtained from [developer.apple.com/fonts](https://developer.apple.com/fonts/).
+
 ### ✨ Scream Real
 The 'Scream Real' font is a decorative/display typeface characterized by a bold and striking design with sharp, angular edges, giving it a dynamic and aggressive style.
 
@@ -53,13 +56,38 @@ A powerful and impactful font.
 
 ## 🚀 Installation
 
-An `install_fonts.bat` script is provided to install all fonts on a Windows machine. Simply run the script to install the fonts.
+A cross-platform installer (`install_fonts.py`) is provided. It detects your OS and installs all fonts to the correct font directory. Python 3.6+ is required.
 
-```batch
-install_fonts.bat
+**Quick start:**
+
+```bash
+# Windows (double-click install_fonts.bat, or run:)
+python install_fonts.py
+
+# macOS / Linux
+python3 install_fonts.py
 ```
 
-**Note:** This script is for Windows only. For other operating systems, you will need to install the fonts manually.
+**Options:**
+
+```bash
+python3 install_fonts.py --list      # list the fonts that would be installed
+python3 install_fonts.py --dry-run   # preview actions without copying anything
+python3 install_fonts.py --system    # install system-wide (needs sudo/admin)
+python3 install_fonts.py --scope user # per-user install (default)
+```
+
+| OS | User install (default) | System install (`--system`) |
+| --- | --- | --- |
+| Windows | `%LOCALAPPDATA%\Microsoft\Windows\Fonts` + HKCU registry | `C:\Windows\Fonts` + HKLM registry |
+| macOS | `~/Library/Fonts` | `/Library/Fonts` |
+| Linux | `~/.local/share/fonts` + `fc-cache` | `/usr/share/fonts` + `fc-cache` |
+
+**Notes:**
+
+- On Windows, `install_fonts.bat` will run the Python installer automatically if Python is installed; otherwise it falls back to the legacy system-wide installer ( Administrator required).
+- Existing fonts with the same filename are skipped, so the script can safely be re-run.
+- On Linux, `fontconfig` (`fc-cache`) refreshes the font cache automatically when available.
 
 ---
 
